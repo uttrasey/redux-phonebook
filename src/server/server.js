@@ -1,59 +1,78 @@
 import path from 'path';
-import Express from 'express';
+import express from 'express';
+import bodyParser from 'body-parser'
 import request from 'request';
+import Store from 'jfs';
 
-var app = Express();
+// simple in memory database
+var db = new Store("data", { type:'memory'} );
+
+// create some entries
+db.saveSync({
+    name: "Matt Uttridge",
+    number: "111-1234-567"
+});
+db.saveSync({
+    name: "John Doe",
+    number: "222-4567-891"
+});
+
+// create application/json parser
+var jsonParser = bodyParser.json()
+
+var app = express();
+
 var server;
 
 const PATH_STYLES = path.resolve(__dirname, '../client/styles');
 const PATH_DIST = path.resolve(__dirname, '../../dist');
 
-var phonebook = [
-        {
-            id: 1,
-            name: "john"
-        },
-        {
-            id: 2,
-            name: "mary"
-        }
-];
-
-var phonebookEntries = {
-    1: {
-        name: "john",
-        phone: 111
-    },
-    2: {
-        name: "mary",
-        phone: 222
-    }
-}
-
-app.use('/styles', Express.static(PATH_STYLES));
-app.use(Express.static(PATH_DIST));
+app.use('/styles', express.static(PATH_STYLES));
+app.use(express.static(PATH_DIST));
 
 // get entries
 app.get('/api/phonebook', (req, res) => {
-    res.json(phonebook);
+    db.all(function(err, objs){
+        res.json(Object.keys(objs));
+    });
 });
 
 // get individual entry
 app.get('/api/phonebook/:id', (req, res) => {
     var id = req.params.id;
-    if (phonebookEntries[id]) {
-        res.json(phonebookEntries[id]);
-    } else {
-        res.status(404).send(id + ' not found');
-    }
+    db.get(id, function(err, entry){
+        if (entry) {
+            res.json(entry);
+        } else {
+            res.status(404).send(id + ' not found');
+        }
+    });
+});
+
+// create entry
+app.post('/api/phonebook', jsonParser, (req, res) => {
+    db.save(req.body, function(err, id){
+        if (id) {
+            res.status(201).send('Created with id: ' + id);
+        } else {
+            res.status(500).send(err);
+        }
+    });
+});
+
+// get individual entry
+app.get('/api/cheat', (req, res) => {
+    db.all(function(err, objs){
+        res.json(objs);
+    });
 });
 
 // serve the root application
 app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/index.html'));
+    res.sendFile(path.resolve(__dirname, '../client/index.html'));
 });
 
 server = app.listen(process.env.PORT || 3000, () => {
-  var port = server.address().port;
-  console.log('Server is listening at %s', port);
+    var port = server.address().port;
+    console.log('Server is listening at %s', port);
 });
