@@ -1,4 +1,6 @@
-# My ideal React/Redux setup for an application that manages a phonebook
+# Simple Phonebook
+
+My ideal React/Redux setup for an application that manages a phonebook
 
 This project was based (loosely) on the great article & boilerplate at
 http://blog.risingstack.com/the-react-way-getting-started-tutorial/
