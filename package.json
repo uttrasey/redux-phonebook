@@ -21,7 +21,8 @@
     "knuth-shuffle": "^1.0.1",
     "react": "^0.14.0",
     "react-addons-pure-render-mixin": "^0.14.0",
-    "react-bootstrap": "^0.27.1"
+    "react-bootstrap": "^0.28.1",
+    "react-dom": "^0.14.3"
   },
   "devDependencies": {
     "babel": "^5.0.12",

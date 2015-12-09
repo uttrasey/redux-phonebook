@@ -8,14 +8,44 @@ var server;
 const PATH_STYLES = path.resolve(__dirname, '../client/styles');
 const PATH_DIST = path.resolve(__dirname, '../../dist');
 
+var phonebook = [
+        {
+            id: 1,
+            name: "john"
+        },
+        {
+            id: 2,
+            name: "mary"
+        }
+];
+
+var phonebookEntries = {
+    1: {
+        name: "john",
+        phone: 111
+    },
+    2: {
+        name: "mary",
+        phone: 222
+    }
+}
+
 app.use('/styles', Express.static(PATH_STYLES));
 app.use(Express.static(PATH_DIST));
 
-// proxy to the API data avoiding CORS
-app.get('/api', (req, res) => {
-  //modify the url in any way you want
-  var newurl = 'http://api.namegame.willowtreemobile.com/';
-  request(newurl).pipe(res);
+// get entries
+app.get('/api/phonebook', (req, res) => {
+    res.json(phonebook);
+});
+
+// get individual entry
+app.get('/api/phonebook/:id', (req, res) => {
+    var id = req.params.id;
+    if (phonebookEntries[id]) {
+        res.json(phonebookEntries[id]);
+    } else {
+        res.status(404).send(id + ' not found');
+    }
 });
 
 // serve the root application
