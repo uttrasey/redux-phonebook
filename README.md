@@ -1,4 +1,4 @@
-# My WillowTree name game
+# My ideal React/Redux setup for an application that manages a phonebook
 
 This project was based (loosely) on the great article & boilerplate at
 http://blog.risingstack.com/the-react-way-getting-started-tutorial/
@@ -7,10 +7,11 @@ Used technologies:
 
 - React
 - React Bootstrap
+- Redux and bindings
 - ES6
 - Webpack
 - Babel
-- Jest (TODO)
+- Jest
 
 ## How to start
 
@@ -30,4 +31,3 @@ TODO add JEST tests
 
 Run:  
 `npm run webpack-watch`
-
