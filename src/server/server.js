@@ -60,6 +60,18 @@ app.post('/api/phonebook', jsonParser, (req, res) => {
     });
 });
 
+// delete an entry
+app.delete('/api/phonebook/:id', (req, res) => {
+    var id = req.params.id;
+    db.delete(id, function(err) {
+        if (err) {
+            res.status(500).send('Could not delete entry with id: ' + id);
+        } else {
+            res.status(200).send({});
+        }
+    });
+});
+
 // get individual entry
 app.get('/api/cheat', (req, res) => {
     db.all(function(err, objs){
