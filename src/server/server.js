@@ -60,6 +60,18 @@ app.post('/api/phonebook', jsonParser, (req, res) => {
     });
 });
 
+// edit an entry
+app.put('/api/phonebook/:id', jsonParser, (req, res) => {
+    var id = req.params.id;
+    db.save(id, req.body, function(err) {
+        if (err) {
+            res.status(500).send('Could not update entry with id: ' + id);
+        } else {
+            res.status(200).send({});
+        }
+    });
+});
+
 // delete an entry
 app.delete('/api/phonebook/:id', (req, res) => {
     var id = req.params.id;
