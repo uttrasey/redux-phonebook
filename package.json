@@ -1,0 +1,37 @@
+{
+  "name": "redux-phonebook",
+  "version": "1.0.0",
+  "description": "Playing around with a simple phonebook application using React & Redux",
+  "main": "src/server/index.js",
+  "scripts": {
+    "start": "node src/server/index.js",
+    "postinstall": "webpack --config config/webpack.js",
+    "webpack": "webpack --config config/webpack.js",
+    "webpack-watch": "webpack --config config/webpack.js --watch --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uttrasey/redux-phonebook.git"
+  },
+  "author": "Matt Uttridge",
+  "dependencies": {
+    "classnames": "^2.1.5",
+    "debug": "^2.1.3",
+    "express": "^4.12.3",
+    "knuth-shuffle": "^1.0.1",
+    "react": "^0.14.0",
+    "react-addons-pure-render-mixin": "^0.14.0",
+    "react-bootstrap": "^0.27.1"
+  },
+  "devDependencies": {
+    "babel": "^5.0.12",
+    "babel-core": "^5.0.12",
+    "babel-loader": "^5.0.0",
+    "eslint": "^1.10.3",
+    "eslint-plugin-react": "^3.11.3",
+    "json-loader": "^0.5.3",
+    "react-addons-test-utils": "^0.14.0",
+    "request": "^2.65.0",
+    "webpack": "^1.8.4"
+  }
+}
