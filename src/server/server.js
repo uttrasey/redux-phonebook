@@ -33,14 +33,8 @@ app.use(express.static(PATH_DIST));
 // get entries
 app.get('/api/phonebook', (req, res) => {
     db.all(function(err, objs){
-        let result = [];
-        Object.keys(objs).forEach(key => {
-            result.push({
-                id: key,
-                name: objs[key].name
-            })
-        });
-        res.json(result);
+        res.setHeader('Content-Type', 'application/json');
+        res.json(objs);
     });
 });
 
@@ -49,6 +43,7 @@ app.get('/api/phonebook/:id', (req, res) => {
     var id = req.params.id;
     db.get(id, function(err, entry){
         if (entry) {
+            res.setHeader('Content-Type', 'application/json');
             res.json(entry);
         } else {
             res.status(404).send(id + ' not found');
@@ -88,13 +83,6 @@ app.delete('/api/phonebook/:id', (req, res) => {
         } else {
             res.status(200).send({});
         }
-    });
-});
-
-// get individual entry
-app.get('/api/cheat', (req, res) => {
-    db.all(function(err, objs){
-        res.json(objs);
     });
 });
 
