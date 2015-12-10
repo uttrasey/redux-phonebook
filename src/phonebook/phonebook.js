@@ -26,10 +26,10 @@ class PhoneBook extends React.Component {
             </Jumbotron>
             <Grid>
               <Row className="show-grid">
-                <Col xs={4} md={3}>
+                <Col lg={3}>
                     <PhoneBookList />
                 </Col>
-                <Col xs={16} md={8}>
+                <Col lg={9}>
                     <Panel>
                         <p>Something will need to go in here!</p>
                     </Panel>
