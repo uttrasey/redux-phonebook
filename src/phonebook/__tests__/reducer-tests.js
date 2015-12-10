@@ -1,7 +1,11 @@
+jest.dontMock('../reducer');
+
+var phonebook = require('../reducer');
+
 describe('reducer', () => {
 
     it('initializes to empty object', () => {
-        expect(1).toBe(1);
+        expect(phonebook(undefined, {})).toEqual({});
     });
 
 });

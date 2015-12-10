@@ -15,3 +15,5 @@ const phonebook = (state = {}, action) => {
             return state;
     }
 }
+
+export default phonebook;
