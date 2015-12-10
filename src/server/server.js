@@ -33,7 +33,14 @@ app.use(express.static(PATH_DIST));
 // get entries
 app.get('/api/phonebook', (req, res) => {
     db.all(function(err, objs){
-        res.json(Object.keys(objs));
+        let result = [];
+        Object.keys(objs).forEach(key => {
+            result.push({
+                id: key,
+                name: objs[key].name
+            })
+        });
+        res.json(result);
     });
 });
 
