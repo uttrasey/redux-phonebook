@@ -1,3 +1,5 @@
+
+
 /**
  * Simple Redux reducer
  */
@@ -6,11 +8,13 @@ const phonebook = (state = {}, action) => {
         case 'LOAD_ENTRIES':
             return action.entries;
         case 'NEW_ENTRY':
-            return state[action.entry.id] = action.entry;
+            return Object.assign({}, state, action.entry);
         case 'EDIT_ENTRY':
             return state[action.entry.id] = action.entry;
         case 'DELETE_ENTRY':
-            return delete state[action.entry.id];
+            const newState = Object.assign({}, state);
+            delete newState[action.id];
+            return newState;
         default:
             return state;
     }
