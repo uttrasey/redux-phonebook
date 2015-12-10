@@ -23,7 +23,7 @@ describe('reducer', () => {
         });
     });
 
-    it('can can delete an entry', () => {
+    it('can delete an entry', () => {
         const initial = {
             1: {
                 name: "matt"
@@ -51,5 +51,63 @@ describe('reducer', () => {
             }
         });
     });
+
+    it('can edit an entry', () => {
+        const initial = {
+            1: {
+                name: "matt"
+            }
+        }
+
+        expect(phonebook(initial, {
+            type: 'EDIT_ENTRY',
+            entry: {
+                1: {
+                    name: "john"
+                }
+            }
+        })).toEqual({
+            1: {
+                name: "john"
+            }
+        });
+    });
+
+    it('can load entries with bad load', () => {
+        const initial = {
+            1: {
+                name: "matt"
+            }
+        }
+
+        // if entries missing don't update
+        expect(phonebook(initial, {
+            type: 'LOAD_ENTRIES',
+            entries: {
+                2: {
+                    name: "john"
+                }
+            }
+        })).toEqual({
+            2: {
+                name: "john"
+            }
+        });
+    });
+
+    it('can load entries with bad load', () => {
+        const initial = {
+            1: {
+                name: "matt"
+            }
+        }
+
+        // if entries missing don't update
+        expect(phonebook(initial, {
+            type: 'LOAD_ENTRIES',
+            undefined
+        })).toEqual(initial);
+    });
+
 
 });
