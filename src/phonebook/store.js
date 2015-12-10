@@ -1,4 +1,4 @@
-
+import { createStore } from 'redux';
 
 /**
  * Simple Redux reducer
@@ -20,4 +20,5 @@ const phonebook = (state = {}, action) => {
     }
 }
 
-export default phonebook;
+const store = createStore(phonebook);
+export default store;

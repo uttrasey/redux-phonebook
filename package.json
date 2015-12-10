@@ -28,9 +28,9 @@
     "jfs": "^0.2.6"
   },
   "devDependencies": {
-    "babel": "^5.0.12",
-    "babel-core": "^5.0.12",
-    "babel-loader": "^5.0.0",
+    "babel": "^5.6.16",
+    "babel-core": "^5.6.16",
+    "babel-loader": "^5.3.1",
     "eslint": "^1.10.3",
     "eslint-plugin-react": "^3.11.3",
     "json-loader": "^0.5.3",
@@ -38,7 +38,8 @@
     "redux-devtools": "^2.1.5",
     "request": "^2.65.0",
     "webpack": "^1.8.4",
-    "jest-cli": "*"
+    "jest-cli": "*",
+    "babel-jest": "*"
 },
 "jest": {
    "scriptPreprocessor": "<rootDir>/preprocessor.js",
@@ -47,7 +48,8 @@
      "<rootDir>/node_modules/react-dom",
      "<rootDir>/node_modules/react-addons-test-utils",
      "<rootDir>/node_modules/react-addons-pure-render-mixin",
-     "<rootDir>/node_modules/fbjs"
+     "<rootDir>/node_modules/fbjs",
+     "<rootDir>/node_modules/redux"
    ]
  }
 }
