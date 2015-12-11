@@ -5,7 +5,15 @@ import store from '../store/store.js';
  * //TODO this class should subscribe to entry data some how react-redux binding instead of hard coded state
  * //TODO add clicking on a name should initiate some kind of router thingy and render of details on the right
  */
-class PhoneBookList extends React.Component {  
+class PhoneBookList extends React.Component {
+
+  onEntryClick(id, e) {
+      e.preventDefault();
+      store.dispatch({
+          type: 'SELECT_ENTRY',
+          id: id
+      });
+  }
 
   render () {
     const { selection, phonebook } = this.props;
@@ -15,13 +23,7 @@ class PhoneBookList extends React.Component {
                     return <span key={entry.id}>{entry.name}</span>;
                 } else {
                     return <div key={entry.id}>
-                             <a onClick={(e) => {
-                                     e.preventDefault();
-                                     store.dispatch({
-                                         type: 'SELECT_ENTRY',
-                                         id: entry.id
-                                     });
-                                 }}>{entry.name}</a>
+                             <a onClick={this.onEntryClick.bind(this, entry.id)}>{entry.name}</a>
                            </div>;
                 }
             })}
