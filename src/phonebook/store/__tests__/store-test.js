@@ -7,7 +7,8 @@ describe('store', () => {
 
     it('initializes to empty object', () => {
         expect(store.getState()).toEqual({
-            phonebook: {}
+            phonebook: {},
+            selection: {}
         });
     });
 

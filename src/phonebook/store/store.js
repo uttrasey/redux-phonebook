@@ -1,8 +1,5 @@
 import { createStore, combineReducers } from 'redux';
 
-/**
- * Simple Redux reducer
- */
 const phonebook = (state = {}, action) => {
     switch (action.type) {
         case 'LOAD_ENTRIES':
@@ -20,6 +17,15 @@ const phonebook = (state = {}, action) => {
     }
 }
 
-const phonebookApp = combineReducers({ phonebook })
+const selection = (state = 0, action) => {
+    switch (action.type) {
+        case 'SELECT_ENTRY':
+            return action.id;
+        default:
+            return state;
+    }
+}
+
+const phonebookApp = combineReducers({ phonebook, selection })
 const store = createStore(phonebookApp);
 export default store;

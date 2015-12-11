@@ -22,7 +22,8 @@ class PhoneBook extends React.Component {
     store.dispatch({
         type: 'LOAD_ENTRIES',
         entries: this.getEntries()
-    })
+    });
+    store.subscribe(this.render.bind(this));
   }
 
   getEntries() {
@@ -35,6 +36,7 @@ class PhoneBook extends React.Component {
   }
 
   render () {
+      console.log(store.getState().selection);
     return <div>
             <Jumbotron>
               <h1>Phonebook</h1>
@@ -43,7 +45,7 @@ class PhoneBook extends React.Component {
               <Row className='show-grid'>
                 <Col lg={4}>
                     <CreateContactButton />
-                    <PhoneBookList entries={store.getState().phonebook} />
+                    <PhoneBookList {...store.getState()} />
                 </Col>
                 <Col lg={8}>
                     <Panel>
