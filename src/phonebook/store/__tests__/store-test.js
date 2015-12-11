@@ -6,7 +6,9 @@ const store = require('../store');
 describe('store', () => {
 
     it('initializes to empty object', () => {
-        expect(store.getState()).toEqual({});
+        expect(store.getState()).toEqual({
+            phonebook: {}
+        });
     });
 
     it('can add an entry', () => {
@@ -14,14 +16,14 @@ describe('store', () => {
             type: 'NEW_ENTRY',
             entry: {
                 1: {
-                    name: "matt"
+                    name: 'matt'
                 }
             }
         }
         store.dispatch(action);
-        expect(store.getState()).toEqual({
+        expect(store.getState().phonebook).toEqual({
             1: {
-                name: "matt"
+                name: 'matt'
             }
         });
     });
@@ -29,10 +31,10 @@ describe('store', () => {
     it('can delete an entry', () => {
         const entries = {
             1: {
-                name: "matt"
+                name: 'matt'
             },
             2: {
-                name: "john"
+                name: 'john'
             }
         }
         store.dispatch({
@@ -44,9 +46,9 @@ describe('store', () => {
             id: 1
         });
 
-        expect(store.getState()).toEqual({
+        expect(store.getState().phonebook).toEqual({
             2: {
-                name: "john"
+                name: 'john'
             }
         });
     });
@@ -54,7 +56,7 @@ describe('store', () => {
     it('can load entries with bad load', () => {
         const entries = {
             1: {
-                name: "matt"
+                name: 'matt'
             }
         }
         store.dispatch({
@@ -67,13 +69,13 @@ describe('store', () => {
             type: 'LOAD_ENTRIES'
         });
 
-        expect(store.getState()).toEqual(entries);
+        expect(store.getState().phonebook).toEqual(entries);
     });
 
     it('can edit an entry', () => {
         const entries = {
             1: {
-                name: "matt"
+                name: 'matt'
             }
         }
         store.dispatch({
@@ -85,14 +87,14 @@ describe('store', () => {
             type: 'EDIT_ENTRY',
             entry: {
                 1: {
-                    name: "john"
+                    name: 'john'
                 }
             }
         });
 
-        expect(store.getState()).toEqual({
+        expect(store.getState().phonebook).toEqual({
             1: {
-                name: "john"
+                name: 'john'
             }
         });
     });
@@ -100,10 +102,10 @@ describe('store', () => {
     it('can load entries', () => {
         const entries = {
             1: {
-                name: "matt"
+                name: 'matt'
             },
             2: {
-                name: "john"
+                name: 'john'
             }
         }
 
@@ -112,7 +114,7 @@ describe('store', () => {
             entries: entries
         });
 
-        expect(store.getState()).toEqual(entries);
+        expect(store.getState().phonebook).toEqual(entries);
     });
 
 

@@ -1,4 +1,4 @@
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 
 /**
  * Simple Redux reducer
@@ -20,5 +20,6 @@ const phonebook = (state = {}, action) => {
     }
 }
 
-const store = createStore(phonebook);
+const phonebookApp = combineReducers({ phonebook })
+const store = createStore(phonebookApp);
 export default store;

@@ -7,33 +7,10 @@ import Panel from 'react-bootstrap/lib/Panel';
  */
 class PhoneBookList extends React.Component {
 
-  /**
-   * @constructor
-   */
-  constructor(options) {
-    super(options);
-    this.state = {
-        entries: [
-            {
-                id: 1,
-                name: "Matt Uttridge"
-            },
-            {
-                id: 2,
-                name: "Joe Bloggs"
-            },
-            {
-                id: 3,
-                name: "Jamie Swanson"
-            }
-        ]
-    }
-  }
-
   render () {
     return <Panel>
-            {this.state.entries.map(function(entry) {
-                return <p>{entry.name}</p>;
+            {this.props.entries.map(function(entry) {
+                return <p key={entry.id}>{entry.name}</p>;
             })}
            </Panel>;
   }
