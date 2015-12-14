@@ -6,7 +6,6 @@ import Col from 'react-bootstrap/lib/Col';
 import Panel from 'react-bootstrap/lib/Panel';
 
 import PhoneBookList from './components/PhoneBookList';
-import CreateContactButton from './components/CreateContactButton';
 
 /*
  * @class Humble beginnings for the phone book
@@ -28,7 +27,6 @@ class PhoneBook extends React.Component {
             <Grid>
               <Row className='show-grid'>
                 <Col lg={4}>
-                    <CreateContactButton />
                     <PhoneBookList {...this.props} />
                 </Col>
                 <Col lg={8}>
