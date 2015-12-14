@@ -33,7 +33,7 @@ class PhoneBook extends React.Component {
               <h1>Phonebook</h1>
             </Jumbotron>
             <Grid>
-              <Row className='show-grid'>
+              <Row className="show-grid">
                 <Col lg={4}>
                     <PhoneBookList {...this.props} onItemClick={this.onItemClick} />
                 </Col>
