@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Link extends Component {
+class Link extends React.Component {
 
     render () {
         const { active, children, onClick } = this.props;
@@ -18,9 +18,9 @@ class Link extends Component {
 }
 
 Link.propTypes = {
-    active: React.PropTypes.boolean.isRequired,
-    children: React.PropTypes.object.isRequired,
-    onClick: React.PropTypes.func.isRequired
+    active: React.PropTypes.bool.isRequired,
+    onClick: React.PropTypes.func.isRequired,
+    children: React.PropTypes.node
 }
 
 export default Link;

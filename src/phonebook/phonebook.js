@@ -5,7 +5,6 @@ import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Panel from 'react-bootstrap/lib/Panel';
 
-import store from './store/store';
 import PhoneBookList from './components/PhoneBookList';
 
 /*
@@ -20,13 +19,6 @@ class PhoneBook extends React.Component {
     super(options);
   }
 
-  onItemClick(id) {
-      store.dispatch({
-          type: 'SELECT_ENTRY',
-          id: id
-      });
-  }
-
   render () {
     return <div>
             <Jumbotron>
@@ -35,7 +27,7 @@ class PhoneBook extends React.Component {
             <Grid>
               <Row className="show-grid">
                 <Col lg={4}>
-                    <PhoneBookList {...this.props} onItemClick={this.onItemClick} />
+                    <PhoneBookList {...this.props} />
                 </Col>
                 <Col lg={8}>
                     <Panel>

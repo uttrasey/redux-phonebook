@@ -1,27 +1,23 @@
 import React from 'react';
 import Panel from 'react-bootstrap/lib/Panel';
-import PhoneBookListItem from './PhoneBookListItem'
+import PhoneBookItemLink from './PhoneBookItemLink'
 
 class PhoneBookList extends React.Component {
 
   render () {
-    const { selection, phonebook, onItemClick } = this.props;
     return <Panel>
-            {phonebook.map((entry) => {
-                return <PhoneBookListItem key={entry.id} entry={entry} selection={selection}
-                    onClick={() => {
-                        onItemClick(entry.id)
-                    }} />
-            })}
+                {this.props.phonebook.map((entry) => {
+                    return <PhoneBookItemLink key={entry.id} id={entry.id}>
+                                {entry.name}
+                            </PhoneBookItemLink>
+                })}
            </Panel>;
   }
 
 }
 
 PhoneBookList.propTypes = {
-    selection: React.PropTypes.number,
-    phonebook: React.PropTypes.array,
-    onItemClick: React.PropTypes.func
+    phonebook: React.PropTypes.array
 }
 
 export default PhoneBookList;
