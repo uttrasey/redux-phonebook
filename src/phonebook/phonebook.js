@@ -5,7 +5,6 @@ import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Panel from 'react-bootstrap/lib/Panel';
 
-import store from './store/store'
 import PhoneBookItemLink from './components/PhoneBookItemLink';
 
 /*
@@ -22,7 +21,7 @@ class PhoneBook extends React.Component {
   }
 
   render () {
-    const phonebook = store.getState().phonebook;
+    const store = this.props.store;
     return <div>
             <Jumbotron>
               <h1>Phonebook</h1>
@@ -31,7 +30,7 @@ class PhoneBook extends React.Component {
               <Row className="show-grid">
                 <Col lg={4}>
                     <Panel>
-                        {this.renderEntries(phonebook)}
+                        {this.renderEntries(store.getState().phonebook)}
                     </Panel>
                 </Col>
                 <Col lg={8}>
@@ -44,6 +43,10 @@ class PhoneBook extends React.Component {
            </div>;
   }
 
+}
+
+PhoneBook.propTypes = {
+    store: React.PropTypes.object.isRequired
 }
 
 export default PhoneBook;

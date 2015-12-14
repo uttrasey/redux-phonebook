@@ -14,4 +14,4 @@ store.dispatch({
 });
 
 let node = document.getElementById('phonebook');
-ReactDOM.render(<PhoneBook />, node);
+ReactDOM.render(<PhoneBook store={store} />, node);
