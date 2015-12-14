@@ -1,10 +1,10 @@
 import React from 'react';
-import store from '../store/store';
 import Link from './Link';
 
 class PhoneBookItemLink extends React.Component {
 
     componentDidMount() {
+        const { store } = this.props;
         this.unsubscribe = store.subscribe(() => {
             this.forceUpdate();
         });
@@ -16,10 +16,10 @@ class PhoneBookItemLink extends React.Component {
 
     render () {
         const props = this.props;
-        const state = store.getState();
+        const state = props.store.getState();
         return <Link active={state.selection === props.id}
                      onClick={() => {
-                         store.dispatch({
+                         props.store.dispatch({
                              type: 'SELECT_ENTRY',
                              id: props.id
                          });
@@ -32,6 +32,7 @@ class PhoneBookItemLink extends React.Component {
 
 PhoneBookItemLink.propTypes = {
     id: React.PropTypes.number.isRequired,
+    store: React.PropTypes.object.isRequired,
     children: React.PropTypes.node
 }
 

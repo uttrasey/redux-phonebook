@@ -13,8 +13,9 @@ import PhoneBookItemLink from './components/PhoneBookItemLink';
 class PhoneBook extends React.Component {
 
   renderEntries (phonebook) {
+      const { store } = this.props;
       return phonebook.map((entry) => {
-          return <PhoneBookItemLink key={entry.id} id={entry.id}>
+          return <PhoneBookItemLink key={entry.id} id={entry.id} store={store}>
               {entry.name}
           </PhoneBookItemLink>
       });
