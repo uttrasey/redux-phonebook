@@ -6,12 +6,20 @@ import Col from 'react-bootstrap/lib/Col';
 import Panel from 'react-bootstrap/lib/Panel';
 
 import store from './store/store'
-import PhoneBookList from './components/PhoneBookList';
+import PhoneBookItemLink from './components/PhoneBookItemLink';
 
 /*
  * @class Humble beginnings for the phone book
  */
 class PhoneBook extends React.Component {
+
+  renderEntries (phonebook) {
+      return phonebook.map((entry) => {
+          return <PhoneBookItemLink key={entry.id} id={entry.id}>
+              {entry.name}
+          </PhoneBookItemLink>
+      });
+  }
 
   render () {
     const phonebook = store.getState().phonebook;
@@ -22,7 +30,9 @@ class PhoneBook extends React.Component {
             <Grid>
               <Row className="show-grid">
                 <Col lg={4}>
-                    <PhoneBookList phonebook={phonebook} />
+                    <Panel>
+                        {this.renderEntries(phonebook)}
+                    </Panel>
                 </Col>
                 <Col lg={8}>
                     <Panel>

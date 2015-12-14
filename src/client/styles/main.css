@@ -6,3 +6,7 @@
 .show-grid {
     margin: 20px;
 }
+
+a:hover {
+    cursor:pointer;
+}
