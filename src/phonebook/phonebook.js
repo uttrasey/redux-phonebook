@@ -13,16 +13,15 @@ import PhoneBookItemLink from './components/PhoneBookItemLink';
 class PhoneBook extends React.Component {
 
   renderEntries (phonebook) {
-      const { store } = this.props;
       return phonebook.map((entry) => {
-          return <PhoneBookItemLink key={entry.id} id={entry.id} store={store}>
+          return <PhoneBookItemLink key={entry.id} id={entry.id}>
               {entry.name}
           </PhoneBookItemLink>
       });
   }
 
   render () {
-    const store = this.props.store;
+    const { store } = this.context;
     return <div>
             <Jumbotron>
               <h1>Phonebook</h1>
@@ -46,8 +45,8 @@ class PhoneBook extends React.Component {
 
 }
 
-PhoneBook.propTypes = {
-    store: React.PropTypes.object.isRequired
+PhoneBook.contextTypes = {
+    store: React.PropTypes.object
 }
 
 export default PhoneBook;

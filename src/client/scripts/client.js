@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PhoneBook from '../../phonebook';
+import Provider from '../../phonebook/components/Provider';
 import store from '../../phonebook/store/store';
 
 store.dispatch({
@@ -14,4 +15,7 @@ store.dispatch({
 });
 
 let node = document.getElementById('phonebook');
-ReactDOM.render(<PhoneBook store={store} />, node);
+ReactDOM.render(
+    <Provider store={store}>
+        <PhoneBook />
+    </Provider>, node);
