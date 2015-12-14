@@ -5,7 +5,6 @@ import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import Panel from 'react-bootstrap/lib/Panel';
 
-import store from './store/store.js'
 import PhoneBookList from './components/PhoneBookList';
 import CreateContactButton from './components/CreateContactButton';
 
@@ -19,15 +18,6 @@ class PhoneBook extends React.Component {
    */
   constructor(options) {
     super(options);
-  }
-
-  getEntries() {
-      return [
-          { id: 1, name: 'Matt Uttridge' },
-          { id: 2, name: 'John Man' },
-          { id: 3, name: 'Sarah Women' },
-          { id: 4, name: 'Billy the kid' }
-      ];
   }
 
   render () {
