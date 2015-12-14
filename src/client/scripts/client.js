@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PhoneBook from '../../phonebook';
-import Provider from '../../phonebook/components/Provider';
+import { Provider } from 'react-redux';
 import store from '../../phonebook/store/store';
 
 store.dispatch({
