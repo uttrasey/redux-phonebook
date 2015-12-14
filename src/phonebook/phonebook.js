@@ -27,7 +27,7 @@ class PhoneBook extends React.Component {
             <Grid>
               <Row className="show-grid">
                 <Col lg={4}>
-                    <PhoneBookList {...this.props} />
+                    <PhoneBookList phonebook={this.props.phonebook} />
                 </Col>
                 <Col lg={8}>
                     <Panel>
@@ -39,6 +39,10 @@ class PhoneBook extends React.Component {
            </div>;
   }
 
+}
+
+PhoneBook.propTypes = {
+    phonebook: React.PropTypes.array.isRequired
 }
 
 export default PhoneBook;
