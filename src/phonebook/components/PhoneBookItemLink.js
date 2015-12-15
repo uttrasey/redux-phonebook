@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { selectEntry } from '../actions/actions';
 import Link from './Link';
 
 const mapStateToProps = (state, ownProps) => {
@@ -10,10 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onClick: (id) => {
-            dispatch({
-                type: 'SELECT_ENTRY',
-                id: id
-            });
+            dispatch(selectEntry(id));
         }
     }
 }
