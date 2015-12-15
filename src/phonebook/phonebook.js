@@ -11,7 +11,16 @@ import PhoneBookItemLink from './components/PhoneBookItemLink';
 /*
  * @class Humble beginnings for the phone book
  */
-class PhoneBookx extends React.Component {
+@connect(state => {
+    return {
+        phonebook: state.phonebook
+    }
+})
+export default class PhoneBook extends React.Component {
+
+  static propTypes = {
+      phonebook: React.PropTypes.array.isRequired
+  }
 
   render () {
     return <div>
@@ -40,17 +49,3 @@ class PhoneBookx extends React.Component {
   }
 
 }
-
-PhoneBookx.propTypes = {
-    phonebook: React.PropTypes.array.isRequired
-}
-
-const mapStateToProps = (state) => {
-    return {
-        phonebook: state.phonebook
-    }
-}
-
-const PhoneBook = connect(mapStateToProps)(PhoneBookx);
-
-export default PhoneBook;
