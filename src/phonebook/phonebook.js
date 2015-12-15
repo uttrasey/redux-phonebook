@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Jumbotron from 'react-bootstrap/lib/Jumbotron';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
